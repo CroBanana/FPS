@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GRdy
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Main
+    m_Weight: 0
+  - m_Path: Main/Flap.L
+    m_Weight: 0
+  - m_Path: Main/Flap.L/Flap
+    m_Weight: 1
+  - m_Path: Main/Flap.R
+    m_Weight: 0
+  - m_Path: Main/Flap.R/Flap left
+    m_Weight: 1
+  - m_Path: Main/Flight.L
+    m_Weight: 0
+  - m_Path: Main/Flight.L/Torus.001
+    m_Weight: 1
+  - m_Path: Main/Flight.R
+    m_Weight: 0
+  - m_Path: Main/Flight.R/Torus.002
+    m_Weight: 1
+  - m_Path: Main/Main.002
+    m_Weight: 1
+  - m_Path: Main/Main.002/Weapon
+    m_Weight: 1
+  - m_Path: Main/Main.003
+    m_Weight: 1
+  - m_Path: Main/Main.003/Front gun opening
+    m_Weight: 1
+  - m_Path: Main/Main.003/Front gun opening left
+    m_Weight: 1
+  - m_Path: Main/Robot Body.001
+    m_Weight: 0
