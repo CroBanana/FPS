@@ -8,15 +8,10 @@ public class GunScript : MonoBehaviour
     public int maxMag;
     public int magSize;
     public float fireSpeed;
+    public float fireSpeedConstant;
 
-    public PlayerMovement playerMovement;
+    public ParticleSystem muzzleFlash;
 
-    private void Start() {
-        playerMovement = GetComponentInParent<PlayerMovement>();
-    }
-
-    public void ReloadComplete(){
-        playerMovement.ReloadComplete();
-    }
+    public Transform cameraAimPosition;
 
 }

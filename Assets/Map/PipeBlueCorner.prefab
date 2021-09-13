@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1630705271786553773}
   - component: {fileID: 3640346912713165697}
   m_Layer: 0
-  m_Name: PipeCorner
+  m_Name: PipeBlueCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2734926752639143587
 Transform:

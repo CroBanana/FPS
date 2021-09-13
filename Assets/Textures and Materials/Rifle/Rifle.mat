@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rifle
-  m_Shader: {fileID: 4800000, guid: e3fbcd342fdb1bc4eb5994f70774e4bd, type: 3}
-  m_ShaderKeywords: FT_EDGE_TESS _ALPHABLEND_ON _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: FT_EDGE_TESS _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -73,13 +72,13 @@ Material:
     - _DispOffset: 0.483
     - _DispPhong: 0
     - _Displacement: 0.05
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _GI_AO: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 2
+    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.00875
     - _Phong: 0
@@ -88,11 +87,11 @@ Material:
     - _SpecAO: 0
     - _SpecBurn: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _Tess: 19.8
     - _TessMode: 1
     - _UVSec: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _maxDist: 45
     m_Colors:
     - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}

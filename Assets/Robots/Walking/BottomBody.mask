@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BottomBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Hand_IK_.L
+    m_Weight: 0
+  - m_Path: Hand_IK_.L/Hand_IK_.L_end
+    m_Weight: 0
+  - m_Path: Hand_IK_.R
+    m_Weight: 0
+  - m_Path: Hand_IK_.R/Hand_IK_.R_end
+    m_Weight: 0
+  - m_Path: Hand_Joint_IK_.L
+    m_Weight: 0
+  - m_Path: Hand_Joint_IK_.L/Hand_Joint_IK_.L_end
+    m_Weight: 0
+  - m_Path: Hand_Joint_IK_.R
+    m_Weight: 0
+  - m_Path: Hand_Joint_IK_.R/Hand_Joint_IK_.R_end
+    m_Weight: 0
+  - m_Path: Heel_IK.L
+    m_Weight: 1
+  - m_Path: Heel_IK.L/Foot_.L
+    m_Weight: 1
+  - m_Path: Heel_IK.L/Foot_.L/Foot_.L_end
+    m_Weight: 1
+  - m_Path: Heel_IK.L/Foot_.L/L_Foot
+    m_Weight: 1
+  - m_Path: Heel_IK.L/Foot_.L/L_Foot_Joint
+    m_Weight: 1
+  - m_Path: Heel_IK.R
+    m_Weight: 1
+  - m_Path: Heel_IK.R/Foot_.R
+    m_Weight: 1
+  - m_Path: Heel_IK.R/Foot_.R/Foot_.R_end
+    m_Weight: 1
+  - m_Path: Heel_IK.R/Foot_.R/R_Foot
+    m_Weight: 1
+  - m_Path: Heel_IK.R/Foot_.R/R_Foot_Joint
+    m_Weight: 1
+  - m_Path: Knee_IK.L
+    m_Weight: 1
+  - m_Path: Knee_IK.L/Knee_IK.L_end
+    m_Weight: 1
+  - m_Path: Knee_IK.R
+    m_Weight: 1
+  - m_Path: Knee_IK.R/Knee_IK.R_end
+    m_Weight: 1
+  - m_Path: Root
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L/L_Leg_Up_Armor
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L/Leg_Down.L
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L/Leg_Down.L/L_Leg_Down_Armor
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L/Leg_Down.L/L_Leg_Joint
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.L/Leg_Down.L/Leg_Down.L_end
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R/Leg_Down.R
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R/Leg_Down.R/Leg_Down.R_end
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R/Leg_Down.R/R_Leg_Down_Armor
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R/Leg_Down.R/R_Leg_Joint
+    m_Weight: 1
+  - m_Path: Root/Leg_Up.R/R_Leg_armor_up
+    m_Weight: 1
+  - m_Path: Root/MainBone
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.001
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.002
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.003
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.004
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.005
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.007
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.008
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.009
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.010
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.011
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.012
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.013
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.014
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.015
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.016
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.017
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.018
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.019
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.020
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.021
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.022
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.023
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.024
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.025
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.026
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.027
+    m_Weight: 0
+  - m_Path: Root/MainBone/Armor_Body.028
+    m_Weight: 0
+  - m_Path: Root/MainBone/Battery
+    m_Weight: 0
+  - m_Path: Root/MainBone/Body__Legs_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Body_Neck_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/L_Arm_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/L_Hand_Armor_Down
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/L_Hand_Sword
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/Sword.L
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/Sword.L/Sword
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/Hand_Down.L/Sword.L/Sword.L_end
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/L_Hand_Armor_UP
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/L_Hand_Up
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/L_HandsSholders_joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.L/L_Joint__UP_Armor
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/Hand_Down.R
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/Hand_Down.R/Hand_Down.R_end
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/Hand_Down.R/R_Arm_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/Hand_Down.R/R_Hand_Armor_Down
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/Hand_Down.R/R_Hand_Gun
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/R_Hand_Armor_UP
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/R_Hand_Up
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/R_HandsSholders_joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/Hand_Up.R/R_Joint__UP_Armor
+    m_Weight: 0
+  - m_Path: Root/MainBone/Head
+    m_Weight: 0
+  - m_Path: Root/MainBone/Head/Glass
+    m_Weight: 0
+  - m_Path: Root/MainBone/Head/Head 1
+    m_Weight: 0
+  - m_Path: Root/MainBone/Head/Head_end
+    m_Weight: 0
+  - m_Path: Root/MainBone/L_Body__LeftArm_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/R_Body__RightArm_Joint
+    m_Weight: 0
+  - m_Path: Root/MainBone/RobotBodyWeakPoint
+    m_Weight: 0

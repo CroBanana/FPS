@@ -11,12 +11,14 @@ GameObject:
   - component: {fileID: 7529435175959835979}
   - component: {fileID: 6904641596426664686}
   - component: {fileID: 8662323941969579556}
-  m_Layer: 0
+  - component: {fileID: 9258303}
+  - component: {fileID: 5381443524951462037}
+  m_Layer: 13
   m_Name: Barrel 1
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7529435175959835979
 Transform:
@@ -25,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7148969399592611825}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9167118, y: 0.0010001659, z: 4.4470377}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -81,3 +83,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9258303
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148969399592611825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 57e59c6b49550554d93e26c04787d69a, type: 3}
+--- !u!114 &5381443524951462037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148969399592611825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af812f007b42894e904dc5007f22841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  explodingRadius: 6

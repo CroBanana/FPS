@@ -6,10 +6,12 @@ public class HandsController : MonoBehaviour
 {
     Animator anim;
     public bool fire = false;
+    public GameObject[] weapons ;
     void Start()
     {
         anim = transform.GetComponent<Animator>();
         fire = anim.GetBool("Fire");
+        anim.SetInteger("WeaponType", 0);
     }
 
     public void Fire(){
@@ -37,6 +39,18 @@ public class HandsController : MonoBehaviour
     }
     public void Reload(){
         anim.SetBool("Reload", true);
+    }
+
+    public void SwitchingWeaponFinished(){
+        int currentWeapon = anim.GetInteger("WeaponType");
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if(i != currentWeapon){
+                weapons[i].SetActive(false);
+            }
+        }
+        anim.SetBool("SwitchingWeapon", false);
+        weapons[currentWeapon].SetActive(true);
     }
 
 }

@@ -67,7 +67,6 @@ public partial class PlayerMovement : MonoBehaviour
         JumpFall();
         OnSwitchWeapon();
         Reload();
-        PickUpGun();
     }
 
     #region Movement
@@ -175,31 +174,4 @@ public partial class PlayerMovement : MonoBehaviour
         gunAnimator.SetBool("Reload",false);
     }
 
-    public void PickUpGun(){
-        Debug.DrawRay(thisCamera.transform.position, thisCamera.transform.forward * 5f, Color.blue);
-        if(Physics.Raycast(thisCamera.transform.position, 
-                                thisCamera.transform.forward, 
-                                out hitInfo, 
-                                5f,
-                                raycastGuns))
-                {
-                    Debug.Log("GUNGUNGUN");
-
-                    if(Input.GetKeyDown(KeyCode.E)){
-
-                        //pokupljanje oruzja
-                        //mice se roditelj objekta
-                        //zamjenjuje se u listi oruzja trenutno oruzje
-                        selectedGun.transform.SetParent(null);
-                        gunAnimator.enabled = false;
-                        selectedGun.transform.position = hitInfo.transform.position;
-                        selectedGun.transform.rotation = hitInfo.transform.rotation;
-                        hitInfo.transform.SetParent(thisCamera.transform);
-                        hitInfo.transform.position = gunPos.transform.position;
-                        guns[selectedGunIndex] = hitInfo.transform.gameObject;
-                        selectedGun= guns[selectedGunIndex];
-                        SelectNewGun();
-                    }
-                }
-    }
 }

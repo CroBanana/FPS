@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Window
+  - Enemy
+  - Pipe
+  - Barrel
+  - PipeFlame
   layers:
   - Default
   - TransparentFX
@@ -17,13 +22,13 @@ TagManager:
   - Guns
   - Wings
   - EnemyWeapons
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Destructable
+  - Hittable
+  - Particles
+  - RedPipe
+  - BluePipe
+  - EnemyBullet
+  - EnemyArmor
   - 
   - 
   - 
