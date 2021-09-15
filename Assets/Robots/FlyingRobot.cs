@@ -53,6 +53,10 @@ public partial class FlyingRobot : MonoBehaviour
 
     [Header("Engaging player")]
     public bool fire = false;
+    public float fireRate =1;
+    public float fireRateOld;
+    public GameObject bullet;
+    public GameObject firePosition;
 
     //detekritanje igrača
     [Header("Detection")]
@@ -62,9 +66,12 @@ public partial class FlyingRobot : MonoBehaviour
     public bool playerFound;
     public float findingPlayerDistance;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        fireRateOld = fireRate;
         leftWIngParticle.SetActive(false);
         rightWingParticle.SetActive(false);
         leftW = leftWing.GetComponent<Rigidbody>();
@@ -83,7 +90,16 @@ public partial class FlyingRobot : MonoBehaviour
         {
             Flight();
             WhereToMove();
-            PlayerDetected();
+            if(!playerFound)
+                PlayerDetected();
+        }
+        if(fire && gun != null){
+            direction = player.transform.position - transform.position;
+            fireRate-=Time.deltaTime;
+            if(fireRate<0 && Vector3.Angle(transform.forward, direction) < 60){
+                fireRate = fireRateOld;
+                Instantiate(bullet,firePosition.transform.position,Quaternion.identity,null);
+            }
         }
 
     }
@@ -100,11 +116,7 @@ public partial class FlyingRobot : MonoBehaviour
                 //Debug.Log(hit.transform.name);
                 if (hit.transform.name == "Player")
                 {
-                    //Debug.Log("ItsHere");
-                    gunFlap1.SetActive(false);
-                    gunFlap2.SetActive(false);
-                    gun.SetActive(true);
-                    playerFound = true;
+                    PlayerFound();
 
                 }
             }
@@ -130,9 +142,18 @@ public partial class FlyingRobot : MonoBehaviour
         moveToTarget = true;
     }
 
-    public void AbleToFire()
-    {
+    public void PlayerFound(){
         fire = true;
+        //Debug.Log("ItsHere");
+        gunFlap1.SetActive(false);
+        gunFlap2.SetActive(false);
+        gun.SetActive(true);
+        playerFound = true;
+    }
+
+    private void OnDestroy() {
+        GameMaster.allFlying.Remove(this);
+        GameMaster.CanGateOpen();
     }
 
 

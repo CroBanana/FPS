@@ -26,14 +26,14 @@ public partial class RobotGround
         {
             if (Physics.Raycast(transform.position, direction, out hit, findingPlayerDistance, layers))
             {
-                FoundPlayer();
+                FoundPlayer(hit.transform);
             }
         }
         
     }
 
-    public void FoundPlayer(){
-        if (hit.transform.name == "Player")
+    public void FoundPlayer(Transform maybePlayer){
+        if (maybePlayer.transform.name == "Player")
             {
                 playerFound=true;
                 navAgent.destination = player.transform.position;
@@ -48,21 +48,23 @@ public partial class RobotGround
         //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
 
         navAgent.destination=player.transform.position;
-        if(Vector3.Distance(transform.position, player.transform.position)<distance){
+        if(Vector3.Distance(transform.position, player.transform.position)>distance){
+            //Debug.Log("Didnt stop");
+            if(hasStopped){
+                navAgent.isStopped = false;
+                hasStopped = false;
+                
+            }
+            anim.SetBool(animation, true);
+        }
+        else {
             if(!hasStopped){
-                Debug.Log("Stopped");
+                //Debug.Log("Stopped");
                 navAgent.isStopped = true;
                 hasStopped = true;
                 anim.SetBool(animation, false);
             }
-        }
-        else {
-            Debug.Log("Didnt stop");
-            if(hasStopped){
-                navAgent.isStopped = false;
-                hasStopped = false;
-                anim.SetBool(animation, true);
-            }
+            anim.SetBool(animation, false);
         }
 
         if(suicideRun && Vector3.Distance(transform.position, player.transform.position)<2f){
@@ -77,5 +79,6 @@ public partial class RobotGround
         }
 
     }
+
 
 }

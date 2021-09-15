@@ -9,10 +9,10 @@ public partial class Player
             //Debug.Log("Fired");
             hands.SetBool("Fire",true);
             curentGunScript.muzzleFlash.Play();
-            CheckIfHitSometing();
             curentGunScript.magSize--;
             curentGunScript.fireSpeed=curentGunScript.fireSpeedConstant;
             canFire=false;
+            CheckIfHitSometing();
         }
     }
 
@@ -30,6 +30,8 @@ public partial class Player
                         GameMaster.Destructable(hitInfo.transform.gameObject, hitInfo.collider.tag, hitInfo.point,Vector3.zero);
                     if(hitInfo.collider.gameObject.layer == 13)
                         GameMaster.Destructable(hitInfo.transform.gameObject, hitInfo.collider.tag, hitInfo.point, hitInfo.point+hitInfo.normal);
+                    if(hitInfo.collider.CompareTag("Light"))
+                        GameMaster.ShootLight(hitInfo.collider.gameObject, hitInfo.point);
                 }
                 Debug.DrawRay(thisCamera.transform.position, thisCamera.transform.forward * 1000, Color.blue);
 

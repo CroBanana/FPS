@@ -11,6 +11,6 @@ public class LookAtPlayer : MonoBehaviour
     }
 
     private void LateUpdate() {
-        transform.LookAt(Player.transform.position);
+        transform.LookAt( Player.transform.position);
     }
 }

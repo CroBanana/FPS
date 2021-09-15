@@ -23,16 +23,23 @@ public partial class RobotGround
             gunFunctioning=false;
             gunCanFire = false;
             navAgent.speed = runSpeed;
-            Debug.Log("Gun arm destroyed");
+            //Debug.Log("Gun arm destroyed");
         }
     }
 
     IEnumerator RunningOutOfPower(){
         yield return new WaitForSecondsRealtime(7);
         hasPower= false;
+        navAgent.isStopped=true;
+        anim.enabled = false;
+        foreach (LookAtPlayer item in transform.GetComponentsInChildren<LookAtPlayer>())
+        {
+            item.enabled = false;
+        }
+        /*
         foreach(var parameter in anim.parameters){
             anim.SetBool(parameter.name, false);
-        }
+        }*/
         Debug.Log("Disabled");
     }
 }

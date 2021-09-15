@@ -29,6 +29,11 @@ public partial class RobotGround : MonoBehaviour
     public GameObject bullet;
     public Transform firePosition;
 
+    //Sword Stuff
+    public float  attackRate = 1f;
+    float attackRateOld ;
+    private bool canAttack;
+
     //reference na objekte koji se mogu uništiti
     public bool swordFunctioning = true;
     public int canMove=0;
@@ -40,10 +45,12 @@ public partial class RobotGround : MonoBehaviour
     public bool hasStopped = false;
     RaycastHit hit;
     public LayerMask layers;
+    public LookAtPlayer lookAt;
     // Start is called before the first frame update
     void Start()
     {
         fireRateOld=fireRate;
+        attackRateOld = attackRate;
         topBody.enabled = false;
         player = GameObject.Find("Player");
         anim = GetComponentInChildren<Animator>();
@@ -74,10 +81,13 @@ public partial class RobotGround : MonoBehaviour
                         FireGun();
                 }
                 else if(swordFunctioning){
+                    anim.SetBool("Gun", false);
+                    anim.SetBool("SwordRdy", true);
                     if(canMove ==0){
-                        Debug.Log("Running");
+                        //Debug.Log("Running");
                         MoveToDistanceOfPlayer(meleDistanceToPlayer, "Run");
                     }
+                    SwordAttack();
                 }
                 else if(suicideRun){
                     MoveToDistanceOfPlayer(meleDistanceToPlayer, "Run");
@@ -99,5 +109,28 @@ public partial class RobotGround : MonoBehaviour
             fireRate = fireRateOld;
             Instantiate(bullet,firePosition.transform.position,Quaternion.identity,null);
         }
+    }
+
+    public void SwordAttack(){
+        if(canAttack && !anim.GetBool("Attack")){
+            if(Vector3.Distance(transform.position, player.transform.position)<meleDistanceToPlayer+1){
+                Debug.Log("Attacking!! "+ Vector3.Distance(transform.position, player.transform.position));
+                anim.SetBool("Attack", true);
+                lookAt.enabled = false;
+                canAttack=false;
+                attackRate= attackRateOld;
+            }
+        }
+        else{
+            attackRate-=Time.deltaTime;
+            if(attackRate<0){
+                canAttack=true;
+            }
+        }
+    }
+
+    private void OnDestroy() {
+        GameMaster.allEnemies.Remove(this);
+        GameMaster.CanGateOpen();
     }
 }

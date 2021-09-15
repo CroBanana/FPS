@@ -11,7 +11,12 @@ public class GameMaster : MonoBehaviour
     public static GameObject particlePipeShower;
     public static LayerMask explosionAffected;
     public static List<RobotGround> allEnemies;
+    public static List<FlyingRobot> allFlying;
     public static bool botsAwareOfPlayer = false;
+    public static GameObject player;
+    public static GameObject gate;
+    public static List<Room> allRooms;
+    public static Transform curentRoom;
     private void Awake() {
         if(Instance != null){
             Debug.Log("There is more then 1 instance");
@@ -19,14 +24,19 @@ public class GameMaster : MonoBehaviour
         }
         Instance = this;
     }
+    private void Start() {
+        player = GameObject.Find("Player");
+    }
 
 
     // Start is called before the first frame update
     public static void CalculateDMG(GameObject target,int DMGAmount){
         target.GetComponent<HP>().TakeDmg(DMGAmount);
-        if(target.CompareTag("Enemy"))
+        if(target.CompareTag("Enemy")){
             EnemyGotDMG();
+        }
     }
+
 
     public static void Destructable(GameObject target, string tag, Vector3 pointOfInpact, Vector3 lookAt){
         if(tag == "Window"){
@@ -78,9 +88,50 @@ public class GameMaster : MonoBehaviour
     }
 
     public static void EnemyGotDMG(){
-        foreach (var enemy in allEnemies)
-        {
-            enemy.FoundPlayer();
+        if(!botsAwareOfPlayer){
+            foreach (var enemy in allEnemies)
+            {
+                if(enemy.playerFound== false)
+                    enemy.FoundPlayer(GameObject.Find("Player").transform);
+            }
+            foreach (var enemy in allFlying)
+            {
+                enemy.PlayerFound();
+            }
+            botsAwareOfPlayer = true;
         }
+            
+    }
+
+    public static void ShootLight(GameObject target, Vector3 pointOfInpact){
+        if(target.CompareTag("Light")){
+            Vector3 direction = pointOfInpact - target.transform.position;
+            target.GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized*500,target.transform.position);
+        }
+    }
+
+
+    public static void CanGateOpen(){
+        if(allEnemies.Count==0 && allFlying.Count==0){
+            foreach (Transform child in gate.transform)
+            {
+                if(child.CompareTag("OpenGate"))
+                    child.gameObject.SetActive(false);
+                if(child.CompareTag("NextRoom"))
+                    child.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public static void NextRoom(){
+        foreach (Transform child in curentRoom)
+        {
+            child.gameObject.SetActive(false);
+        }
+        int index = Random.Range(0, allRooms.Count);
+        player.GetComponent<CharacterController>().enabled=false;
+        player.transform.position = allRooms[index].spawnPoint.transform.position;
+        player.GetComponent<CharacterController>().enabled=true;
+        Debug.Log("Next Room !" + player.name+ "   " +index);
     }
 }

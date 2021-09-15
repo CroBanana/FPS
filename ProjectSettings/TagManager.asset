@@ -9,6 +9,9 @@ TagManager:
   - Pipe
   - Barrel
   - PipeFlame
+  - Light
+  - OpenGate
+  - NextRoom
   layers:
   - Default
   - TransparentFX

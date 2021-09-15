@@ -36,7 +36,7 @@ public class DestructableArmor : MonoBehaviour
             }
         }
         if(SplitRestOfBody){
-            Debug.Log("Parent: "+transform.parent.name);
+            //Debug.Log("Parent: "+transform.parent.name);
             
             MeshCollider[] children = transform.parent.GetComponentsInChildren<MeshCollider>();
             foreach (var part in children)
@@ -52,7 +52,7 @@ public class DestructableArmor : MonoBehaviour
         }
 
         transform.SetParent(null);
-        Debug.Log("Armor destroyed");
+        //Debug.Log("Armor destroyed");
         rig.isKinematic=false;
         gameObject.transform.SetParent(null);
         //Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y+1, player.transform.position.z);

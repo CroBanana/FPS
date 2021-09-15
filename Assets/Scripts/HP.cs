@@ -36,7 +36,7 @@ public class HP : MonoBehaviour
 
     public void TakeDmg(int dmgAmount){
         hp=hp-dmgAmount;
-        Debug.Log(hp+ "   "+ gameObject.name);
+        //Debug.Log(hp+ "   "+ gameObject.name);
         if(hp<=0 && !transform.CompareTag("Barrel")){
 
             if(gameObject.layer ==18)
@@ -46,4 +46,6 @@ public class HP : MonoBehaviour
 
         }
     }
+
+
 }

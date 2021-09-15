@@ -8,20 +8,21 @@ public class VariablesForGM : MonoBehaviour
     public  GameObject particlePipeFlame;
     public  GameObject particlePipeShower;
     public LayerMask explosionAffected;
-    public List<RobotGround> allEnemies;
+    public GameObject gate;
+    public List<Room> allRooms;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameMaster.gate=gate;
         GameMaster.particleExplosion=particleExplosion;
         GameMaster.particlePipeFlame = particlePipeFlame;
         GameMaster.particlePipeShower = particlePipeShower;
         GameMaster.explosionAffected = explosionAffected;
-        RobotGround[] gos = GameObject.FindObjectsOfType<RobotGround>();
-        foreach (var ground in gos)
+        foreach (Transform room in transform)
         {
-            allEnemies.Add(ground);
+            allRooms.Add(room.GetComponent<Room>());
         }
-        GameMaster.allEnemies = allEnemies;
+        GameMaster.allRooms = allRooms;
     }
 }
