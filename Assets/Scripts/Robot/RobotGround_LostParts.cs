@@ -5,13 +5,13 @@ using UnityEngine;
 public partial class RobotGround
 {
     public void LostParts(string partName){
-        if(partName == "Leg"){
-            canMove--;
-            if(canMove == -2){
-                mainBoneRig.isKinematic = false;
-                anim.SetBool("Walk", false);
-                anim.SetBool("Run", false);
-            }
+        if(partName == "LegLeft" && !lostLeftLeg){
+            lostLeftLeg = true;
+            DisableLegs();
+        }
+        if(partName == "LegRight" && !lostRightLeg){
+            lostRightLeg = true;
+            DisableLegs();
         }
             
         if(partName == "Head"){
@@ -25,6 +25,24 @@ public partial class RobotGround
             navAgent.speed = runSpeed;
             //Debug.Log("Gun arm destroyed");
         }
+    }
+
+    void DisableLegs(){
+        canMove--;
+            if(canMove == -2){
+                foreach (MeshCollider col in leg1.GetComponentsInChildren<MeshCollider>() )
+                {
+                    col.GetComponent<Rigidbody>().isKinematic=false;
+                }
+                foreach (MeshCollider col in leg2.GetComponentsInChildren<MeshCollider>() )
+                {
+                    col.GetComponent<Rigidbody>().isKinematic=false;
+                }
+                mainBoneRig.isKinematic = false;
+                anim.SetBool("Walk", false);
+                anim.SetBool("Run", false);
+                navAgent.isStopped = true;
+            }
     }
 
     IEnumerator RunningOutOfPower(){

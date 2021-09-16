@@ -46,6 +46,11 @@ public partial class RobotGround : MonoBehaviour
     RaycastHit hit;
     public LayerMask layers;
     public LookAtPlayer lookAt;
+
+    bool lostLeftLeg = false;
+    bool lostRightLeg = false;
+
+    public GameObject leg1, leg2;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +94,7 @@ public partial class RobotGround : MonoBehaviour
                     }
                     SwordAttack();
                 }
-                else if(suicideRun){
+                else if(suicideRun && canMove==0){
                     MoveToDistanceOfPlayer(meleDistanceToPlayer, "Run");
                 }
 

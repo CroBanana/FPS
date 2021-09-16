@@ -13,10 +13,6 @@ public class Room : MonoBehaviour
     {
         nextRoomGate = transform.Find("NextRoomGate").gameObject;
         spawnPoint = transform.Find("PlayerSpawn");
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
         foreach (FlyingRobot robot in transform.GetComponentsInChildren<FlyingRobot>())
         {
             roomEnemiesFlying.Add(robot);
@@ -25,6 +21,13 @@ public class Room : MonoBehaviour
         {
             roomEnemiesGround.Add(robot);
         }
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        Debug.Log(roomEnemiesFlying.Count + "  flying");
+        Debug.Log(roomEnemiesGround.Count + "  Ground");
     }
 
     private void OnTriggerEnter(Collider other) {

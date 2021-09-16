@@ -24,7 +24,7 @@ public class DestructableArmor : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
-        robot = transform.root.GetComponent<RobotGround>();
+        robot = transform.GetComponentInParent<RobotGround>();
     }
 
     public void ArmorDestroyed(){
@@ -76,9 +76,9 @@ public class DestructableArmor : MonoBehaviour
         if(swordArm)
             robot.swordFunctioning=false;
         if(legL)
-            robot.LostParts("Leg");
+            robot.LostParts("LegLeft");
         if(legR)
-            robot.LostParts("Leg");
+            robot.LostParts("LegRight");
         if(head)
             robot.LostParts("Head");
         if(battery)
