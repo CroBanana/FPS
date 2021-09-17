@@ -41,8 +41,4 @@ public partial class Player
 
     }
 
-    private void OnDrawGizmos() {
-        //Gizmos.color=Color.red;
-        //Gizmos.DrawSphere(groundSpherePosition.position,0.5f);
-    }
 }

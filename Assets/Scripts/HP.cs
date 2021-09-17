@@ -14,6 +14,10 @@ public class HP : MonoBehaviour
         startHP=hp;
         if(transform.CompareTag("Barrel"))
             exploadable=true;
+
+        if(transform.name == "Player"){
+            MenuAndSettings.instance.hp.text ="HP: "+hp.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -36,12 +40,18 @@ public class HP : MonoBehaviour
 
     public void TakeDmg(int dmgAmount){
         hp=hp-dmgAmount;
+        if(transform.name == "Player"){
+            MenuAndSettings.instance.hp.text ="HP: "+hp.ToString();
+        }
         //Debug.Log(hp+ "   "+ gameObject.name);
         if(hp<=0 && !transform.CompareTag("Barrel")){
 
             if(gameObject.layer ==18)
                 gameObject.GetComponent<DestructableArmor>().ArmorDestroyed();
-            else
+            else if(gameObject.name == "Player"){
+                transform.GetComponent<Player>().thisCamera.transform.SetParent(null);
+                Destroy(gameObject);
+            }else
                 Destroy(gameObject);
 
         }

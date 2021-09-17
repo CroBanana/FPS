@@ -12,6 +12,7 @@ public partial class Player
             curentGunScript.magSize--;
             curentGunScript.fireSpeed=curentGunScript.fireSpeedConstant;
             canFire=false;
+            MenuAndSettings.instance.ammo.text = curentGunScript.magSize.ToString()+"/"+curentGunScript.maxMag.ToString();
             CheckIfHitSometing();
         }
     }
@@ -23,8 +24,10 @@ public partial class Player
                                 100.0f,
                                 raycastLayers))
                 {
-                    if(hitInfo.collider.gameObject.CompareTag("Enemy") || hitInfo.collider.gameObject.CompareTag("Barrel"))
+                    if(hitInfo.collider.gameObject.CompareTag("Enemy") || hitInfo.collider.gameObject.CompareTag("Barrel")){
                         GameMaster.CalculateDMG(hitInfo.transform.gameObject,  curentGunScript.dmgAmount);
+                        GameMaster.CreateParticle(hitInfo.point,null,hitInfo.point+hitInfo.normal,null);
+                    }
 
                     if(hitInfo.collider.gameObject.layer == 12)
                         GameMaster.Destructable(hitInfo.transform.gameObject, hitInfo.collider.tag, hitInfo.point,Vector3.zero);

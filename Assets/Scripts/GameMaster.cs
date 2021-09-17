@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameMaster : MonoBehaviour
     public static GameObject particleExplosion;
     public static GameObject particlePipeFlame;
     public static GameObject particlePipeShower;
+    public static GameObject particleBulletImpact;
     public static LayerMask explosionAffected;
     public static List<RobotGround> allEnemies;
     public static List<FlyingRobot> allFlying;
@@ -25,7 +27,14 @@ public class GameMaster : MonoBehaviour
         Instance = this;
     }
     private void Start() {
+        //SceneManager.LoadScene(1);
         player = GameObject.Find("Player");
+        Time.timeScale = 1;
+        SetMouseSpeed(MenuAndSettings.instance.mouseSpeedModifier);
+        MenuAndSettings.instance.play.SetActive(false);
+        MenuAndSettings.instance.resume.SetActive(true);
+        MenuAndSettings.instance.menu.SetActive(false);
+        MenuAndSettings.instance.hud.SetActive(true);
     }
 
 
@@ -34,6 +43,12 @@ public class GameMaster : MonoBehaviour
         target.GetComponent<HP>().TakeDmg(DMGAmount);
         if(target.CompareTag("Enemy")){
             EnemyGotDMG();
+        }
+    }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            ESC();
         }
     }
 
@@ -80,8 +95,16 @@ public class GameMaster : MonoBehaviour
     }
 
     public static void CreateParticle(Vector3 pointOfInpact, GameObject particle,Vector3 lookAt,Transform target){
-        GameObject part= Instantiate(particle, pointOfInpact,Quaternion.identity,target);
-        part.transform.LookAt(lookAt);
+        if(particle ==null){
+            GameObject part= Instantiate(particleBulletImpact, pointOfInpact,Quaternion.identity,target);
+            part.transform.LookAt(lookAt);
+
+        }else
+        {
+            GameObject part= Instantiate(particle, pointOfInpact,Quaternion.identity,target);
+            part.transform.LookAt(lookAt);
+        }
+
         //Vector3 direction = part.transform.position - transform.position;
         //Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
         //part.transform.rotation = rotation;
@@ -128,10 +151,53 @@ public class GameMaster : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-        int index = Random.Range(0, allRooms.Count);
-        player.GetComponent<CharacterController>().enabled=false;
-        player.transform.position = allRooms[index].spawnPoint.transform.position;
-        player.GetComponent<CharacterController>().enabled=true;
-        Debug.Log("Next Room !" + player.name+ "   " +index);
+        try
+        {
+            int index = Random.Range(0, allRooms.Count);
+            player.GetComponent<CharacterController>().enabled=false;
+            player.transform.position = allRooms[index].spawnPoint.transform.position;
+            player.GetComponent<CharacterController>().enabled=true;
+            Debug.Log("Next Room !" + player.name+ "   " +index);
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("No more rooms game ended");
+            MenuAndSettings.instance.EndGame("Finished");
+        }
+    }
+
+    public static void SetMouseSpeed(float speedModifier){
+        try
+        {
+            player.GetComponentInChildren<MouseLook>().mouseSpeedModifier = speedModifier;
+            Debug.Log("Its set");
+        }
+        catch (System.Exception)
+        {
+            
+            Debug.Log("Someting went wrong");
+        }
+        
+    }
+
+    public static void ESC(){
+        if(!MenuAndSettings.instance.blockESC){
+            if(MenuAndSettings.instance.menu.activeSelf == true){
+                MenuAndSettings.instance.menu.SetActive(false);
+                MenuAndSettings.instance.hud.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
+                SetMouseSpeed(MenuAndSettings.instance.mouseSpeedModifier);
+                Time.timeScale = 1;
+            }
+
+            else
+            {
+                MenuAndSettings.instance.menu.SetActive(true);
+                MenuAndSettings.instance.hud.SetActive(false);
+                Cursor.lockState = CursorLockMode.Confined;
+                Time.timeScale = 0;
+            }
+        }
+        
     }
 }

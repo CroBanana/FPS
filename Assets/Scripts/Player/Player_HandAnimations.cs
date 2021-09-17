@@ -23,11 +23,17 @@ public partial class Player
         {
             hands.SetBool("Aim", true);
             speed = speedAim;
+            MenuAndSettings.instance.DeactivateCursor();
+            isZooming=true;
+            mouseLook.ads=ads;
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             hands.SetBool("Aim", false);
             speed = speedNormal;
+            MenuAndSettings.instance.ActivateCursor();
+            isZooming=false;
+            mouseLook.ads = 1f;
         }
 
 
@@ -74,6 +80,7 @@ public partial class Player
         hands.SetBool("SwitchingWeapon", false);
         weapons[curentWeapon].SetActive(true);
         curentGunScript = weapons[curentWeapon].GetComponent<GunScript>();
+        MenuAndSettings.instance.ammo.text = curentGunScript.magSize.ToString()+"/"+curentGunScript.maxMag.ToString();
     }
 
     public void Fire()
@@ -88,6 +95,7 @@ public partial class Player
     {
         curentGunScript.magSize = curentGunScript.maxMag;
         hands.SetBool("Reload", false);
+        MenuAndSettings.instance.ammo.text = curentGunScript.magSize.ToString()+"/"+curentGunScript.maxMag.ToString();
     }
 
     public void ReloadStart()

@@ -32,6 +32,14 @@ public partial class Player : MonoBehaviour
     public GunScript curentGunScript;
     public int curentWeapon = 0;
     public bool canFire;
+    
+    //zoom in and out
+    public bool isZooming;
+    public int zoom= 30;
+    public int normal = 60;
+    public float zoomSmooth = 5;
+    public MouseLook mouseLook;
+    public float ads=0.8f;
 
     //Ikona za ciljanje
     public Texture2D cursorTexture;
@@ -62,6 +70,7 @@ public partial class Player : MonoBehaviour
         //animator inputs
         HandsInputs();
         FireRate();
+        Zoom();
     }
 
     private void FixedUpdate() {
@@ -75,5 +84,18 @@ public partial class Player : MonoBehaviour
         if(curentGunScript.fireSpeed<=0){
             canFire=true;
         }
+    }
+
+    public void Zoom(){
+        if(isZooming){
+            thisCamera.fieldOfView = Mathf.Lerp(thisCamera.fieldOfView, zoom,Time.deltaTime*zoomSmooth);
+        }
+        else if(thisCamera.fieldOfView <= normal)
+        {
+            thisCamera.fieldOfView = Mathf.Lerp(thisCamera.fieldOfView, normal,Time.deltaTime*zoomSmooth);
+        }
+    }
+    private void OnDestroy() {
+        MenuAndSettings.instance.EndGame("Player");
     }
 }
