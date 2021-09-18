@@ -29,6 +29,8 @@ public partial class RobotGround
                 FoundPlayer(hit.transform);
             }
         }
+        Debug.DrawRay(robotCore.transform.position, direction, Color.green);
+
         
     }
 
@@ -46,26 +48,37 @@ public partial class RobotGround
 
     void MoveToDistanceOfPlayer(float distance, string animation){
         //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
-
+        Vector3 direction = player.transform.position - robotCore.transform.position;
         navAgent.destination=player.transform.position;
         if(Vector3.Distance(transform.position, player.transform.position)>distance){
             //Debug.Log("Didnt stop");
             if(hasStopped){
                 navAgent.isStopped = false;
                 hasStopped = false;
-                
             }
             anim.SetBool(animation, true);
         }
-        else {
-            if(!hasStopped){
-                //Debug.Log("Stopped");
-                navAgent.isStopped = true;
-                hasStopped = true;
+        else if(Physics.Raycast(new Vector3 (transform.position.x, transform.position.y+1,transform.position.z), direction, out hit, Mathf.Infinity,layers)){
+
+            if(hit.transform.name != "Player"){
+                if(hasStopped){
+                    navAgent.isStopped = false;
+                    hasStopped = false;
+                }
+                anim.SetBool(animation, true);
+            }else
+            {
+                if(!hasStopped){
+                    //Debug.Log("Stopped");
+                    navAgent.isStopped = true;
+                    hasStopped = true;
+                    anim.SetBool(animation, false);
+                }
                 anim.SetBool(animation, false);
             }
-            anim.SetBool(animation, false);
+            Debug.DrawRay(robotCore.transform.position, direction, Color.green);
         }
+
 
         if(suicideRun && Vector3.Distance(transform.position, player.transform.position)<2f){
             try

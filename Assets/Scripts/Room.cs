@@ -8,6 +8,7 @@ public class Room : MonoBehaviour
     public List<FlyingRobot> roomEnemiesFlying;
     public List<RobotGround> roomEnemiesGround;
     public GameObject nextRoomGate;
+    public bool enemysAgro;
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,12 +36,13 @@ public class Room : MonoBehaviour
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(true);
-                GameMaster.curentRoom = transform;
-                GameMaster.allEnemies = roomEnemiesGround;
-                GameMaster.allFlying = roomEnemiesFlying;
-                GameMaster.gate = nextRoomGate;
-                GameMaster.allRooms.Remove(this);
             }
+            GameMaster.enemysAgro = enemysAgro;
+            GameMaster.curentRoom = transform;
+            GameMaster.allEnemies = roomEnemiesGround;
+            GameMaster.allFlying = roomEnemiesFlying;
+            GameMaster.gate = nextRoomGate;
+            GameMaster.allRooms.Remove(this);
         }
     }
 }

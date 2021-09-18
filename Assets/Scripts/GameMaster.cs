@@ -19,6 +19,7 @@ public class GameMaster : MonoBehaviour
     public static GameObject gate;
     public static List<Room> allRooms;
     public static Transform curentRoom;
+    public static bool enemysAgro;
     private void Awake() {
         if(Instance != null){
             Debug.Log("There is more then 1 instance");
@@ -42,7 +43,12 @@ public class GameMaster : MonoBehaviour
     public static void CalculateDMG(GameObject target,int DMGAmount){
         target.GetComponent<HP>().TakeDmg(DMGAmount);
         if(target.CompareTag("Enemy")){
-            EnemyGotDMG();
+            if(enemysAgro)
+                EnemyGotDMG();
+            else
+            {
+                
+            }
         }
     }
 
@@ -124,6 +130,16 @@ public class GameMaster : MonoBehaviour
             botsAwareOfPlayer = true;
         }
             
+    }
+    public static void EnemyGotDMG(GameObject target){
+        try
+        {
+            target.transform.GetComponent<RobotGround>().FoundPlayer(player.transform);
+        }
+        catch (System.Exception)
+        {
+            target.transform.GetComponent<FlyingRobot>().PlayerFound();
+        }
     }
 
     public static void ShootLight(GameObject target, Vector3 pointOfInpact){

@@ -60,8 +60,10 @@ public partial class RobotGround : MonoBehaviour
         player = GameObject.Find("Player");
         anim = GetComponentInChildren<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
-        navAgent.destination = patrolPoints[0].position;
-        anim.SetBool("Walk", true);
+        if(patrolPoints.Length!= 0){
+           navAgent.destination = patrolPoints[0].position;
+            anim.SetBool("Walk", true); 
+        }
     }
 
     // Update is called once per frame
@@ -73,12 +75,13 @@ public partial class RobotGround : MonoBehaviour
         if(hasPower){
             if(!playerFound){
                 //canMove oznacuje koliko robot ima noggu kada izgubi jednu nemoze se kretati
-                if(canMove==0)
+                if(canMove==0 && patrolPoints.Length!= 0)
                     Patrol();
                 PlayerDetection();
             }
             else
             {
+                
                 if(canMove ==0)
                     MoveToDistanceOfPlayer(distanceToPlayer,"Walk");
                 if(gunFunctioning){

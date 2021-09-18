@@ -101,12 +101,14 @@ public class MenuAndSettings : MonoBehaviour
         if(whatEnding =="Player"){
             menu.SetActive(false);
             hud.SetActive(false);
+            end.SetActive(false);
             playerDied.SetActive(true);
         }else
         {
             menu.SetActive(false);
             hud.SetActive(false);
             end.SetActive(true);
+            playerDied.SetActive(false);
         }
     }
 

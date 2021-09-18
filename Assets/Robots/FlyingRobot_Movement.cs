@@ -79,8 +79,10 @@ public partial class FlyingRobot
         forceWings.y = force;
         if (transform.position.y < levitateHeight)
         {
-            leftW?.AddForce(forceWings);
-            rightW?.AddForce(forceWings);
+            if(leftW!=null)
+                leftW.AddForce(forceWings);
+            if(rightW!=null)
+                rightW.AddForce(forceWings);
         }
     }
 
