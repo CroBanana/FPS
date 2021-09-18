@@ -39,6 +39,7 @@ public class MenuAndSettings : MonoBehaviour
         play.SetActive(true);
         resume.SetActive(false);
         if(SceneManager.GetActiveScene().buildIndex==0){
+            Cursor.SetCursor(null, Vector3.zero, CursorMode.Auto);
             menu.SetActive(true);
             hud.SetActive(false);
             end.SetActive(false);

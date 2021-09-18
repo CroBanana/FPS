@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         //Debug.Log(other.name);
+        if(other.gameObject == player)
+            GameMaster.CalculateDMG(player,10);
         Destroy(gameObject);
         
     }

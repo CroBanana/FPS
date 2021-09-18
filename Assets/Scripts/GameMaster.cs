@@ -36,6 +36,7 @@ public class GameMaster : MonoBehaviour
         MenuAndSettings.instance.resume.SetActive(true);
         MenuAndSettings.instance.menu.SetActive(false);
         MenuAndSettings.instance.hud.SetActive(true);
+        Cursor.SetCursor(null, Vector3.zero, CursorMode.Auto);
     }
 
 
@@ -198,6 +199,7 @@ public class GameMaster : MonoBehaviour
 
     public static void ESC(){
         if(!MenuAndSettings.instance.blockESC){
+            Cursor.SetCursor(null, Vector3.zero, CursorMode.Auto);
             if(MenuAndSettings.instance.menu.activeSelf == true){
                 MenuAndSettings.instance.menu.SetActive(false);
                 MenuAndSettings.instance.hud.SetActive(true);
